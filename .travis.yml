@@ -6,6 +6,10 @@ os:
   - linux
   - osx
 
+matrix:
+  allow_failures:
+  - os: osx
+
 env:
   global:
     - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR}/thunderchez"
