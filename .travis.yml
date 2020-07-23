@@ -8,11 +8,9 @@ os:
 
 env:
   linux:
-    - CHEZ_MACHINETYPE=ta6le
-    - CHEZ_KERNEL="$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE"
+    - CHEZ_MACHINETYPE=ta6le    
   osx:
-    - CHEZ_MACHINETYPE=ta6osx
-    - CHEZ_KERNEL="$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE"
+    - CHEZ_MACHINETYPE=ta6osx    
   global:
     - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR}/thunderchez"
     - DEPLOY_FILE="chezure_`uname`_`uname -m`"
@@ -39,7 +37,7 @@ addons:
 before_install:  
   - /bin/bash -e ./.travis/install_chez
   - pushd ${TRAVIS_BUILD_DIR}
-  - $SCHEME --script "build.ss"
+  - CHEZ_KERNEL="$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE" $SCHEME --script "build.ss"
   - popd
 
 script:
