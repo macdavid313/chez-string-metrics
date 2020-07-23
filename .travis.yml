@@ -37,7 +37,9 @@ addons:
 
 before_install:  
   - /bin/bash -e ./.travis/install_chez
-  - $SCHEME --script "${TRAVIS_BUILD_DIR}/build.ss"
+  - pushd ${TRAVIS_BUILD_DIR}
+  - $SCHEME --script "build.ss"
+  - popd
 
 script:
   - $SCHEME --script "${TRAVIS_BUILD_DIR}/tests.ss"
