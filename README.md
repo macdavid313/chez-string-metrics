@@ -46,7 +46,7 @@ JFYI, the performace is quite pleasant and general no `consing`.
 
 ## Install
 
-Download from [release]()(currently only provided for Linux 64bit and macOS) and put it somewhere that your `chez` can search for.
+Download from `release` (currently only provided for Linux 64bit) and put it somewhere that your `chez` can search for.
 
 ## Build from source
 
