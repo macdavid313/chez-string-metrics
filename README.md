@@ -1,4 +1,6 @@
 # chez-string-metrics
+[![Build Status](https://travis-ci.com/macdavid313/chez-string-metrics.svg?token=XxU4s79HyxyMEs7ogNps&branch=master)](https://travis-ci.com/macdavid313/chez-string-metrics)
+
 Calculate various string metrics efficiently in Chez Scheme, e.g. Levenshtein
 
 Currently these metrics are supported:
