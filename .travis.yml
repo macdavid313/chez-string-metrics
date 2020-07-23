@@ -9,13 +9,14 @@ os:
 env:
   linux:
     - CHEZ_MACHINETYPE=ta6le
+    - CHEZ_KERNEL=$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE
   oxs:
     - CHEZ_MACHINETYPE=ta6osx
+    - CHEZ_KERNEL=$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE
   global:
     - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR}/thunderchez"
     - DEPLOY_FILE="chezure_`uname`_`uname -m`"
-    - CC=gcc
-    - CHEZ_KERNEL=$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE
+    - CC=gcc    
     - SCHEME=$HOME/ChezScheme/bin/scheme
   
 addons:

@@ -6,7 +6,7 @@
   (or (getenv "CHEZSCHEME_KERNEL") (getenv "CHEZ_KERNEL")
       (errorf 'string-metrics-build "Cannot decide where is \"scheme.h\", please set the environment variable 'CHEZSCHEME_KERNEL' or 'CHEZ_KERNEL'")))
 
-(display (format "Chez Scheme Kernel Path: ~s" chez_kernel_path))
+(display (format "Chez Scheme Kernel Path: ~s~%" chez_kernel_path))
 
 (case (machine-type)
   ((a6nt ta6nt) (errorf 'string-metrics-build "Sorry, it doesn't build on Windows yet."))
