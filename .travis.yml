@@ -12,7 +12,7 @@ env:
   oxs:
     - CHEZ_MACHINETYPE=ta6osx
   global:
-    - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${${TRAVIS_BUILD_DIR}/thunderchez"
+    - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR}/thunderchez"
     - DEPLOY_FILE="chezure_`uname`_`uname -m`"
     - CC=gcc
     - CHEZ_KERNEL=$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE
