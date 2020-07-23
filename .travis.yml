@@ -7,15 +7,12 @@ os:
   - osx
 
 env:
-  linux:
-    - CHEZ_MACHINETYPE=ta6le    
-  osx:
-    - CHEZ_MACHINETYPE=ta6osx    
   global:
     - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR}/thunderchez"
-    - DEPLOY_FILE="chezure_`uname`_`uname -m`"
+    - DEPLOY_FILE="chez-string_metrics_`uname`_`uname -m`"
     - CC=gcc    
     - SCHEME=$HOME/ChezScheme/bin/scheme
+    - CHEZ_MACHINETYPE=$(echo "(machine-type)" | $SCHEME -q)
   
 addons:
   homebrew:
