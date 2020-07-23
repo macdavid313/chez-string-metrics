@@ -11,7 +11,9 @@
   (else
    (let ([cmd1 (string-append cc " -c -Wall -Werror -fpic -O3 -I" chez_kernel_path " c/string_metrics.c")]
          [cmd2 (string-append cc " -shared -o libstring_metrics.so string_metrics.o")])
+     (display (format "Start building: ~a~%" cmd1))
      (system cmd1)
+     (display (format "Start building: ~a~%" cmd2))
      (system cmd2))))
 
 ;;; compile whole library for distribution
