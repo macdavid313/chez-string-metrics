@@ -42,7 +42,7 @@ ptr Shamming(ptr str1, ptr str2)
 }
 ```
 
-JFYI, the performace is quite pleasant and general no `consing`.
+JFYI, the performace is quite pleasant.
 
 ## Install
 
