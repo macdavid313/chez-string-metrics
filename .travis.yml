@@ -1,0 +1,61 @@
+language: c
+
+sudo: required
+
+os:
+  - linux
+  - osx
+
+env:
+  linux:
+    - CHEZ_MACHINETYPE=ta6le
+  oxs:
+    - CHEZ_MACHINETYPE=ta6osx
+  global:
+    - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${${TRAVIS_BUILD_DIR}/thunderchez"
+    - DEPLOY_FILE="chezure_`uname`_`uname -m`"
+    - CC=gcc
+    - CHEZ_KERNEL=$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE
+  
+addons:
+  homebrew:
+    update: true
+    packages:
+      - aria2
+      - ncurses
+      - ossp-uuid
+  apt:
+    update: true
+    packages:
+      - libncurses5-dev
+      - libgmp-dev
+      - libffi-dev
+      - uuid-dev
+      - zlib1g-dev
+      - aria2
+
+before_install:  
+  - /bin/bash -e ./.travis/install_chez
+  - scheme --script "${TRAVIS_BUILD_DIR}/build.ss"
+
+script:
+  - scheme --script "${TRAVIS_BUILD_DIR}/tests.ss"
+
+before_deploy:
+  - rm -rf chez-string-metrics/*
+  - mv string-matrics.so chez-string-metrics
+  - mv libstring_metrics.* chez-string-metrics
+  - zip -r $DEPLOY_FILE.zip chez-string-metrics
+  - tar czf $DEPLOY_FILE.tar.gz chez-string-metrics
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: 
+    - $DEPLOY_FILE.zip
+    - $DEPLOY_FILE.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
+  # draft: true
+  overwrite: true
