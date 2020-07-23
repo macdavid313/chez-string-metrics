@@ -47,7 +47,7 @@ script:
 
 before_deploy:
   - rm -rf chez-string-metrics/*
-  - mv string-matrics.so chez-string-metrics
+  - mv string-metrics.so chez-string-metrics
   - mv libstring_metrics.* chez-string-metrics
   - zip -r $DEPLOY_FILE.zip chez-string-metrics
   - tar czf $DEPLOY_FILE.tar.gz chez-string-metrics
