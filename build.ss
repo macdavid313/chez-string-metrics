@@ -9,14 +9,16 @@
 (display (format "Chez Scheme Kernel Path: ~s~%" chez_kernel_path))
 
 (case (machine-type)
-  ((a6nt ta6nt) (errorf 'string-metrics-build "Sorry, it doesn't build on Windows yet."))
-  (else
+  [(a6nt ta6nt) (errorf 'string-metrics-build "Sorry, it doesn't build on Windows yet.")]
+  [else
    (let ([cmd1 (string-append cc " -c -Wall -Werror -fpic -O3 -I" chez_kernel_path " c/string_metrics.c")]
-         [cmd2 (string-append cc " -shared -o libstring_metrics.so string_metrics.o")])
+         [cmd2 (case (machine-type)
+                 [(a6osx ta6osx) (string-append cc " -shared -o libstring_metrics.dylib string_metrics.o " chez_kernel_path "/kernel.o -liconv -lncurses")]
+                 [else (string-append cc " -shared -o libstring_metrics.so string_metrics.o")])])
      (display (format "Start building: ~a~%" cmd1))
      (system cmd1)
      (display (format "Start building: ~a~%" cmd2))
-     (system cmd2))))
+     (system cmd2))])
 
 ;;; compile whole library for distribution
 (parameterize ([optimize-level 2]
