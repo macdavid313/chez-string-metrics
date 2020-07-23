@@ -22,18 +22,18 @@
                (map car (library-directories)))
      (return #f))))
 
-(define (load-librure*)
+(define (load-libstring_metrics*)
   (let ([found? (search-lib)])
     (if found?
         (load-shared-object found?)
-        (warningf 'load-librure "~s (required by ~a) has not been loaded." libstring_metrics 'string-metrics))))
+        (warningf 'load-libstring_metrics "~s (required by ~a) has not been loaded." libstring_metrics 'string-metrics))))
 
-(define load-librure
+(define load-libstring_metrics
   (eval-when (compile load eval)
              (call/cc
               (lambda (k)
                 (with-exception-handler
                     (lambda (x)
                       (when (condition? x)
-                        (k (load-librure*))))
+                        (k (load-libstring_metrics*))))
                   (lambda () (load-shared-object libstring_metrics)))))))
