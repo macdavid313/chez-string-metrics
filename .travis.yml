@@ -11,8 +11,7 @@ env:
     - CHEZSCHEMELIBDIRS="${TRAVIS_BUILD_DIR}:${TRAVIS_BUILD_DIR}/thunderchez"
     - DEPLOY_FILE="chez-string_metrics_`uname`_`uname -m`"
     - CC=gcc    
-    - SCHEME=$HOME/ChezScheme/bin/scheme
-    - CHEZ_MACHINETYPE=$(echo "(machine-type)" | $SCHEME -q)
+    - SCHEME=$HOME/ChezScheme/bin/scheme    
   
 addons:
   homebrew:
@@ -34,7 +33,9 @@ addons:
 before_install:  
   - /bin/bash -e ./.travis/install_chez
   - pushd ${TRAVIS_BUILD_DIR}
-  - CHEZ_KERNEL="$HOME/ChezScheme/lib/csv9.5.2/$CHEZ_MACHINETYPE" $SCHEME --script "build.ss"
+  - CHEZ_MACHINETYPE=$(echo "(machine-type)" | $SCHEME -q)
+  - echo ${CHEZ_MACHINETYPE}
+  - CHEZ_KERNEL="$HOME/ChezScheme/lib/csv9.5.2/${CHEZ_MACHINETYPE}" $SCHEME --script "build.ss"
   - popd
 
 script:
