@@ -42,11 +42,11 @@ ptr Shamming(ptr str1, ptr str2)
 }
 ```
 
-JFYI, the performace is quite pleasant and general no `consing`.
+JFYI, the performace is quite pleasant.
 
 ## Install
 
-Download from [release]()(currently only provided for Linux 64bit and macOS) and put it somewhere that your `chez` can search for.
+Download from [release]()(currently provided for Linux 64bit only) and put it somewhere that your `chez` can search for.
 
 ## Build from source
 
